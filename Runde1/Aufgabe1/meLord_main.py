@@ -31,7 +31,7 @@ class Solver:
                         try:
                             if len(self.list_2[c]) == len(self.list_1[i]):
                                 if self.list_2[c][x] == char:
-                                    print(f" {self.list_1[i]} gehört zu: {self.list_2[c]}")
+                                    #print(f" {self.list_1[i]} gehört zu: {self.list_2[c]}")
                                     self.result.insert(i, self.list_2[c])
                                     self.list_1[i] = ""
                                     self.list_2[c] = ""
@@ -57,7 +57,7 @@ class Solver:
             for c in range(len(self.list_2)):
                 try:
                     if len(self.list_2[c]) == len(self.list_1[i]):
-                            print(f" {self.list_1[i]} gehört zu: {self.list_2[c]}")
+                            #print(f" {self.list_1[i]} gehört zu: {self.list_2[c]}")
                             for j in range(len(self.list_1_position)):
                                 try:
                                     if len(self.list_1_position[j]) == len(self.list_1[i]):
@@ -70,7 +70,8 @@ class Solver:
                     pass
         #print(self.list_1)
         #print(self.list_2)
-        print(self.result)
+        #print(self.result)
+        print(" ".join(str(x) for x in self.result))
 
     # öffnet die Datei
     def read_inputs(self):
