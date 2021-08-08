@@ -12,26 +12,29 @@ class Solver:
     def main(self):
         self.read_inputs()
 
+
+
         # Sonderzeichen?
         for i in range(len(self.list_1)):
             if "," or "!" in self.list_1[i]:
                 self.list_1[i] = self.list_1[i].replace(",", "")
                 self.list_1[i] = self.list_1[i].replace("!", "")
+                self.list_1[i] = self.list_1[i].replace(".", "")
 
-        print(self.list_1)
-        print(self.list_2)
+        # print(self.list_1)
+        # print(self.list_2)
 
         for i in range(len(self.list_1)):
             for char in self.list_1[i]:
                 if char != "_":
                     x = self.list_1[i].index(char)
-                    #print(x)
-                    #print(char)
+                    # print(x)
+                    # print(char)
                     for c in range(len(self.list_2)):
                         try:
                             if len(self.list_2[c]) == len(self.list_1[i]):
                                 if self.list_2[c][x] == char:
-                                    #print(f" {self.list_1[i]} gehört zu: {self.list_2[c]}")
+                                    # print(f" {self.list_1[i]} gehört zu: {self.list_2[c]}")
                                     self.result.insert(i, self.list_2[c])
                                     self.list_1[i] = ""
                                     self.list_2[c] = ""
@@ -47,35 +50,36 @@ class Solver:
         while "" in self.list_2:
             self.list_2.remove("")
 
-        #print(self.list_1)
-        #print(self.list_2)
-        #print(self.list_1_position)
-        #print(self.list_2_position)
-        #print(self.list_result)
+        # print(self.list_1)
+        # print(self.list_2)
+        # print(self.list_1_position)
+        # print(self.list_2_position)
+        # print(self.list_result)
 
         for i in range(len(self.list_1)):
             for c in range(len(self.list_2)):
                 try:
                     if len(self.list_2[c]) == len(self.list_1[i]):
-                            #print(f" {self.list_1[i]} gehört zu: {self.list_2[c]}")
-                            for j in range(len(self.list_1_position)):
-                                try:
-                                    if len(self.list_1_position[j]) == len(self.list_1[i]):
-                                        self.result.insert(j, self.list_2[c])
-                                except:
-                                    pass
+                        # print(f" {self.list_1[i]} gehört zu: {self.list_2[c]}")
+                        for j in range(len(self.list_1_position)):
+                            try:
+                                if len(self.list_1_position[j]) == len(self.list_1[i]):
+                                    self.result.insert(j, self.list_2[c])
+                            except:
+                                pass
 
 
                 except:
                     pass
-        #print(self.list_1)
-        #print(self.list_2)
-        #print(self.result)
+        # print(self.list_1)
+        # print(self.list_2)
+        # print(self.result)
         print(" ".join(str(x) for x in self.result))
 
     # öffnet die Datei
     def read_inputs(self):
         file_num = 0  # reatselnummer
+        print(f"Rätzel {file_num}")
         with open(f"{INPUT_PATH}/raetsel{file_num}.txt", "r", encoding="utf-8") as file:
             self.list_1 = file.readline().split()
             self.list_2 = file.readline().split()
